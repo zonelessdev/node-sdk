@@ -37,11 +37,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zonelessdev/zoneless-node.git"
+    "url": "git+https://github.com/zonelessdev/node-sdk.git"
   },
   "homepage": "https://zoneless.com/docs",
   "bugs": {
-    "url": "https://github.com/zonelessdev/zoneless-node/issues"
+    "url": "https://github.com/zonelessdev/node-sdk/issues"
   },
   "dependencies": {
     "@solana/web3.js": "^1.98.4",
