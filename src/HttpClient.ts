@@ -8,7 +8,7 @@ export interface RequestOptions {
   method: 'GET' | 'POST' | 'DELETE';
   path: string;
   body?: object;
-  query?: Record<string, string | number | undefined>;
+  query?: Record<string, string | number | undefined | boolean | string[] | object>;
   headers?: Record<string, string>;
   /** Idempotency key for POST requests to prevent duplicate operations */
   idempotencyKey?: string;
@@ -132,7 +132,7 @@ export class HttpClient {
    */
   async Get<T>(
     path: string,
-    query?: Record<string, string | number | undefined>,
+    query?: Record<string, string | number | undefined | boolean | string[] | object>,
     options?: RequestExtraOptions
   ): Promise<T> {
     return this.Request<T>({
@@ -173,7 +173,7 @@ export class HttpClient {
   /**
    * Builds the full URL with query parameters.
    */
-  private BuildUrl(path: string, query?: Record<string, string | number | undefined>): string {
+  private BuildUrl(path: string, query?: Record<string, string | number | undefined | boolean | string[] | object>): string {
     const baseUrl = this.config.baseUrl.replace(/\/$/, '');
     const url = new URL(`${baseUrl}/v1${path}`);
 
