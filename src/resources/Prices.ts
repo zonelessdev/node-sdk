@@ -27,7 +27,7 @@ export class Prices extends BaseResource {
 		return this.client.Get<Price>(`/prices/${id}`);
 	}
 
-	/** @see https://zoneless.com/docs/products/list */
+	/** @see https://zoneless.com/docs/prices/list */
   async list(
     params: ListPricesInput = {}
   ): Promise<ListResponse<Price>> {
