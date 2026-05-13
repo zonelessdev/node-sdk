@@ -5,6 +5,7 @@ export * from './BalanceTransactionSchema';
 export * from './EventSchema';
 export * from './ExternalWalletSchema';
 export * from './PayoutSchema';
+export * from './PriceSchema';
 export * from './PersonSchema';
 export * from './TopUpSchema';
 export * from './TransferSchema';

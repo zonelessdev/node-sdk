@@ -13,6 +13,7 @@ export {
 export { LoginLinks } from './LoginLinks';
 export { Payouts } from './Payouts';
 export { Persons } from './Persons';
+export { Prices } from './Prices';
 export { Products } from './Products';
 export { TopUps } from './TopUps';
 export { Transfers } from './Transfers';
