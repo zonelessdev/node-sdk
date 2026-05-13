@@ -53,6 +53,11 @@ export const EVENT_TYPES = [
   'person.updated',
   'person.deleted',
 
+	// Price events
+	'price.created',
+	'price.updated',
+	'price.deleted',
+
 	// Product events
 	'product.created',
 	'product.updated',
