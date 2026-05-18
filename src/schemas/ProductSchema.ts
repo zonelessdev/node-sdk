@@ -1,5 +1,5 @@
 import { z } from 'zod';
-
+import { ExpandableSchema } from './ExpandableSchema';
 
 const PackageDimensionsSchema = z.object({
 	height: z.number().min(0).max(100000),
@@ -11,6 +11,12 @@ const PackageDimensionsSchema = z.object({
 const MarketingFeatureSchema = z.object({
 	name: z.string().min(1).max(80),
 });
+
+/**
+ * Schema for retrieving a product.
+ */
+export const RetrieveProductSchema = ExpandableSchema;
+export type RetrieveProductInput = z.infer<typeof RetrieveProductSchema>;
 
 /**
  * Schema for creating a product. Only name is required.
@@ -98,7 +104,7 @@ export const CreateProductSchema = z.object({
 	statement_descriptor: z.string().max(22).optional(),
 	unit_label: z.string().optional(),
 	url: z.string().url().optional(),
-});
+}).merge(ExpandableSchema);
 
 export type CreateProductInput = z.infer<
   typeof CreateProductSchema
@@ -121,7 +127,7 @@ export const UpdateProductSchema = z.object({
 	statement_descriptor: z.string().max(22).optional(),
 	unit_label: z.string().optional(),
 	url: z.string().url().optional(),
-});
+}).merge(ExpandableSchema);
 
 export type UpdateProductInput = z.infer<
   typeof UpdateProductSchema
@@ -144,7 +150,7 @@ export const ListProductsSchema = z.object({
 	shippable: z.boolean().optional(),
 	starting_after: z.string().optional(),
 	url: z.string().url().optional(),
-});
+}).merge(ExpandableSchema);
 export type ListProductsInput = z.infer<
   typeof ListProductsSchema
 >;

@@ -1,6 +1,7 @@
 import { BaseResource } from './Base';
 import { Product, ProductDeleted } from '../types/Product';
 import {
+	RetrieveProductInput,
   CreateProductInput,
 	UpdateProductInput,
 	ListProductsInput,
@@ -23,8 +24,8 @@ export class Products extends BaseResource {
 	}
 
 	/** @see https://zoneless.com/docs/products/retrieve */
-	async retrieve(id: string): Promise<Product> {
-		return this.client.Get<Product>(`/products/${id}`);
+	async retrieve(id: string, params: RetrieveProductInput = {}): Promise<Product> {
+		return this.client.Get<Product>(`/products/${id}`, params);
 	}
 
 	/** @see https://zoneless.com/docs/products/delete */
