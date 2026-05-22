@@ -3,7 +3,8 @@ import { Price } from '../types/Price';
 import {
   CreatePriceInput,
 	UpdatePriceInput,
-	ListPricesInput
+	ListPricesInput,
+	RetrievePriceInput
 } from '../schemas/PriceSchema';
 import { ListResponse } from '../types/ApiResponse';
 
@@ -23,8 +24,8 @@ export class Prices extends BaseResource {
 	}
 
 	/** @see https://zoneless.com/docs/prices/retrieve */
-	async retrieve(id: string): Promise<Price> {
-		return this.client.Get<Price>(`/prices/${id}`);
+	async retrieve(id: string, params: RetrievePriceInput = {}): Promise<Price> {
+		return this.client.Get<Price>(`/prices/${id}`, params);
 	}
 
 	/** @see https://zoneless.com/docs/prices/list */
