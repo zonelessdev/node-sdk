@@ -1,4 +1,11 @@
 import { z } from 'zod';
+import { ExpandableSchema } from './ExpandableSchema';
+
+/**
+ * Schema for retrieving a price.
+ */
+export const RetrievePriceSchema = ExpandableSchema;
+export type RetrievePriceInput = z.infer<typeof RetrievePriceSchema>;
 
 /**
  * Schema for creating a price.
@@ -97,7 +104,8 @@ export const CreatePriceSchema = z.object({
     })
     .optional(),
   unit_amount_decimal: z.string().optional(),
-});
+})
+.merge(ExpandableSchema);
 
 export type CreatePriceInput = z.infer<typeof CreatePriceSchema>;
 
@@ -142,7 +150,8 @@ export const UpdatePriceSchema = z.object({
     .optional(),
   lookup_key: z.string().max(200).optional(),
   transfer_lookup_key: z.boolean().optional(),
-});
+})
+.merge(ExpandableSchema);
 
 export type UpdatePriceInput = z.infer<typeof UpdatePriceSchema>;
 
@@ -173,7 +182,9 @@ export const ListPricesSchema = z.object({
     })
     .optional(),
   starting_after: z.string().optional(),
-});
+})
+.merge(ExpandableSchema);
+
 export type ListPricesInput = z.infer<typeof ListPricesSchema>;
 
 export const ListPricesFiltersSchema = z.object({
