@@ -5,6 +5,7 @@ export {
   BalanceTransactions,
   BalanceTransactionRequestOptions,
 } from './BalanceTransactions';
+export { Customers } from './Customers';
 export { Events } from './Events';
 export {
   ExternalAccounts,
