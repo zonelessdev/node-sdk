@@ -3,10 +3,12 @@ import { AccountLinkRecord } from './AccountLink';
 import { ApiKey } from './ApiKey';
 import { Balance } from './Balance';
 import { BalanceTransaction } from './BalanceTransaction';
+import { Customer } from './Customer';
 import { ExternalWallet } from './ExternalWallet';
 import { IdempotencyKey } from './IdempotencyKey';
 import { Payout } from './Payout';
 import { Person } from './Person';
+import { Price } from './Price';
 import { Product } from './Product';
 import { TopUp } from './TopUp';
 import { Transfer, TransferReversal } from './Transfer';
@@ -36,6 +38,11 @@ export const EVENT_TYPES = [
   // Balance transaction events
   'balance_transaction.created',
 
+  // Customer events
+  'customer.created',
+  'customer.updated',
+  'customer.deleted',
+
   // External account (wallet) events
   'external_account.created',
   'external_account.updated',
@@ -53,15 +60,15 @@ export const EVENT_TYPES = [
   'person.updated',
   'person.deleted',
 
-	// Price events
-	'price.created',
-	'price.updated',
-	'price.deleted',
+  // Product events
+  'product.created',
+  'product.updated',
+  'product.deleted',
 
-	// Product events
-	'product.created',
-	'product.updated',
-	'product.deleted',
+  // Price events
+  'price.created',
+  'price.updated',
+  'price.deleted',
 
   // Top-up events
   'topup.created',
@@ -88,11 +95,13 @@ export type EventDataObject =
   | ApiKey
   | Balance
   | BalanceTransaction
+  | Customer
   | ExternalWallet
   | IdempotencyKey
   | Payout
   | Person
-	| Product
+  | Price
+  | Product
   | TopUp
   | Transfer
   | TransferReversal

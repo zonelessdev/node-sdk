@@ -3,6 +3,7 @@ import { Accounts } from './resources/Accounts';
 import { AccountLinks } from './resources/AccountLinks';
 import { BalanceResource } from './resources/Balance';
 import { BalanceTransactions } from './resources/BalanceTransactions';
+import { Customers } from './resources/Customers';
 import { Events } from './resources/Events';
 import { LoginLinks } from './resources/LoginLinks';
 import { Payouts } from './resources/Payouts';
@@ -53,6 +54,9 @@ export class Zoneless {
 
   /** BalanceTransactions API resource */
   readonly balanceTransactions: BalanceTransactions;
+
+	/** Customers API resource */
+	readonly customers: Customers;
 
   /** Events API resource */
   readonly events: Events;
@@ -107,6 +111,7 @@ export class Zoneless {
     this.accountLinks = new AccountLinks(this.client);
     this.balance = new BalanceResource(this.client);
     this.balanceTransactions = new BalanceTransactions(this.client);
+		this.customers = new Customers(this.client);
     this.events = new Events(this.client);
     this.loginLinks = new LoginLinks(this.client);
     this.payouts = new Payouts(this.client);
