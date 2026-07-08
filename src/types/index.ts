@@ -9,6 +9,7 @@ export * from './AuthenticatedUser';
 export * from './Balance';
 export * from './BalanceTransaction';
 export * from './Customer';
+export * from './CheckoutSession';
 export * from './Event';
 export * from './ExternalWallet';
 export * from './IdempotencyKey';

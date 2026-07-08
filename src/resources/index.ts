@@ -16,6 +16,7 @@ export { Payouts } from './Payouts';
 export { Persons } from './Persons';
 export { Prices } from './Prices';
 export { Products } from './Products';
+export { CheckoutSessions } from './CheckoutSessions';
 export { TopUps } from './TopUps';
 export { Transfers } from './Transfers';
 export { WebhookEndpoints } from './WebhookEndpoints';
