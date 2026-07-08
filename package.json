@@ -1,6 +1,6 @@
 {
   "name": "@zoneless/node",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Zoneless SDK for Node.js",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
