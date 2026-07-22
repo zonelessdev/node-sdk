@@ -10,6 +10,7 @@ import { LoginLinks } from './resources/LoginLinks';
 import { Payouts } from './resources/Payouts';
 import { Prices } from './resources/Prices';
 import { Products } from './resources/Products';
+import { Subscriptions } from './resources/Subscriptions';
 import { TopUps } from './resources/TopUps';
 import { Transfers } from './resources/Transfers';
 import { WebhookEndpoints } from './resources/WebhookEndpoints';
@@ -77,6 +78,9 @@ export class Zoneless {
 	/** Products API resource */
 	readonly products: Products;
 
+  /** Subscriptions API resource */
+  readonly subscriptions: Subscriptions;
+
   /** TopUps API resource */
   readonly topups: TopUps;
 
@@ -122,6 +126,7 @@ export class Zoneless {
     this.payouts = new Payouts(this.client);
 		this.prices = new Prices(this.client);
 		this.products = new Products(this.client);
+    this.subscriptions = new Subscriptions(this.client);
     this.topups = new TopUps(this.client);
     this.transfers = new Transfers(this.client);
     this.webhookEndpoints = new WebhookEndpoints(this.client);

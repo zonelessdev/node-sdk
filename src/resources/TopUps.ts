@@ -6,6 +6,7 @@ import {
   ListTopUpsInput,
 } from '../schemas/TopUpSchema';
 import { ListResponse } from '../types/ApiResponse';
+import { ApplyDateFilter } from '../utils';
 
 /**
  * @see https://zoneless.com/docs/topups
@@ -52,35 +53,8 @@ export class TopUps extends BaseResource {
       status: params.status,
     };
 
-    if (params.amount) {
-      if (params.amount.gt !== undefined) {
-        query['amount[gt]'] = params.amount.gt;
-      }
-      if (params.amount.gte !== undefined) {
-        query['amount[gte]'] = params.amount.gte;
-      }
-      if (params.amount.lt !== undefined) {
-        query['amount[lt]'] = params.amount.lt;
-      }
-      if (params.amount.lte !== undefined) {
-        query['amount[lte]'] = params.amount.lte;
-      }
-    }
-
-    if (params.created) {
-      if (params.created.gt !== undefined) {
-        query['created[gt]'] = params.created.gt;
-      }
-      if (params.created.gte !== undefined) {
-        query['created[gte]'] = params.created.gte;
-      }
-      if (params.created.lt !== undefined) {
-        query['created[lt]'] = params.created.lt;
-      }
-      if (params.created.lte !== undefined) {
-        query['created[lte]'] = params.created.lte;
-      }
-    }
+    ApplyDateFilter(query, 'amount', params.amount);
+    ApplyDateFilter(query, 'created', params.created);
 
     return query;
   }

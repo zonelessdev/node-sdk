@@ -9,6 +9,7 @@ import {
 	ListCheckoutSessionLineItemsInput
 } from '../schemas/CheckoutSessionSchema';
 import { ListResponse } from '../types/ApiResponse';
+import { ApplyDateFilter } from '../utils';
 
 /**
  * @see https://zoneless.com/docs/checkout/sessions
@@ -58,20 +59,7 @@ export class CheckoutSessions extends BaseResource {
 		if (params.customer_details) {
 			query['customer_details[email]'] = params.customer_details.email;
 		}
-		if (params.created) {
-      if (params.created.gt !== undefined) {
-        query['created[gt]'] = params.created.gt;
-      }
-      if (params.created.gte !== undefined) {
-        query['created[gte]'] = params.created.gte;
-      }
-      if (params.created.lt !== undefined) {
-        query['created[lt]'] = params.created.lt;
-      }
-      if (params.created.lte !== undefined) {
-        query['created[lte]'] = params.created.lte;
-      }
-    }
+		ApplyDateFilter(query, 'created', params.created);
     return this.client.Get<ListResponse<CheckoutSession>>(
       `/checkout/sessions`,
       query
