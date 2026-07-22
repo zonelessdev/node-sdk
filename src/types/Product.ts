@@ -1,4 +1,4 @@
-import { Price } from "./Price";
+import { Price } from './Price';
 
 /**
  * Stripe-compatible Balance Product object for Zoneless.

@@ -6,6 +6,32 @@
  */
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Balance Details (extended view with on-chain data)
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Extended balance view combining on-chain wallet data with
+ * internal balance records. Used by the platform dashboard
+ * to show a full breakdown of funds.
+ * @zoneless_extension
+ */
+export interface BalanceDetails {
+  object: 'balance_details';
+  /** USDC balance held in the on-chain wallet (human-readable, e.g. 100.50) */
+  wallet_usdc: number;
+  /** SOL balance held in the on-chain wallet (human-readable, e.g. 0.05) */
+  wallet_sol: number;
+  /** Total available balance across all connected accounts (in cents) */
+  connected_accounts_owed: number;
+  /** Platform's own available balance from the internal ledger (in cents) */
+  platform_available: number;
+  /** Platform's own pending balance from the internal ledger (in cents) */
+  platform_pending: number;
+  /** The wallet address these balances correspond to */
+  wallet_address: string;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Source Types (breakdown by source)
 // ─────────────────────────────────────────────────────────────────────────────
 

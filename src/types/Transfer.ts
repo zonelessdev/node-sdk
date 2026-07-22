@@ -1,6 +1,6 @@
 /**
  * Stripe-compatible Transfer object for Zoneless Connect.
- * A Transfer is created when you move funds between Stripe accounts as part of Connect.
+ * A Transfer is created when you move funds between accounts as part of Connect.
  *
  * @see https://docs.stripe.com/api/transfers/object
  */
@@ -90,10 +90,10 @@ export interface Transfer {
   /** An arbitrary string attached to the object. Often useful for displaying to users */
   description: string | null;
 
-  /** ID of the Stripe account the transfer was sent to */
+  /** ID of the connected account the transfer was sent to */
   destination: string;
 
-  /** If the destination is a Stripe account, this will be the ID of the payment that the destination account received for the transfer */
+  /** The ID of the payment that the destination account received for the transfer */
   destination_payment: string | null;
 
   /** Has the value true if the object exists in live mode or the value false if the object exists in test mode */

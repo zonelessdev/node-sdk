@@ -34,13 +34,12 @@ export type BalanceTransactionBalanceType =
   | 'refund_and_dispute_prefunding';
 
 /**
- * Transaction status in the Stripe balance.
+ * Transaction status.
  */
 export type BalanceTransactionStatus = 'available' | 'pending';
 
 /**
  * Transaction type for balance transactions.
- * For MVP, we support the most common types. Additional types can be added as needed.
  */
 export type BalanceTransactionType =
   | 'adjustment'
@@ -80,7 +79,7 @@ export interface BalanceTransaction {
   object: 'balance_transaction';
   /** Gross amount of this transaction (in cents). A positive value represents funds charged to another party, and a negative value represents funds sent to another party */
   amount: number;
-  /** The date that the transaction's net funds become available in the Stripe balance */
+  /** The date that the transaction's net funds become available in the balance */
   available_on: number;
   /** The balance that this transaction impacts */
   balance_type: BalanceTransactionBalanceType;
@@ -94,13 +93,13 @@ export interface BalanceTransaction {
   fee: number;
   /** Detailed breakdown of fees (in cents) paid for this transaction */
   fee_details: BalanceTransactionFeeDetail[];
-  /** Net impact to a Stripe balance (in cents). A positive value represents incrementing a Stripe balance, and a negative value decrementing a Stripe balance. Calculated as amount - fee */
+  /** Net impact to the account balance (in cents). A positive value represents incrementing the balance, and a negative value decrementing it. Calculated as amount - fee */
   net: number;
   /** Learn more about how reporting categories can help you understand balance transactions from an accounting perspective */
   reporting_category: string;
-  /** This transaction relates to the Stripe object (nullable) */
+  /** The ID of the source object for this transaction (nullable) */
   source: string | null;
-  /** The transaction's net funds status in the Stripe balance, which are either available or pending */
+  /** The transaction's net funds status, which is either available or pending */
   status: BalanceTransactionStatus;
   /** Transaction type */
   type: BalanceTransactionType;

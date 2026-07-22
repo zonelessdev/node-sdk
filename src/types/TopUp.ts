@@ -77,9 +77,6 @@ export interface TopUpSource {
   metadata?: Record<string, string>;
 }
 
-// Note: CreateTopUpInput and UpdateTopUpInput are exported from schemas/TopUpSchema.ts
-// to stay in sync with Zod validation schemas
-
 /**
  * Response from POST /v1/topups/check-deposits
  * Returns the result of checking the blockchain for new deposits.
