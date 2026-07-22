@@ -5,7 +5,14 @@ import { z } from 'zod';
  * Only wallet_address is required - other fields have sensible defaults.
  */
 export const CreateExternalWalletSchema = z.object({
-  wallet_address: z.string().min(1, 'Wallet address is required'),
+  wallet_address: z
+    .string()
+    .min(32, 'Wallet address must be at least 32 characters')
+    .max(44, 'Wallet address must be at most 44 characters')
+    .regex(
+      /^[1-9A-HJ-NP-Za-km-z]+$/,
+      'Wallet address must be a valid base58 Solana address'
+    ),
   network: z.string().min(1, 'Network is required').optional(),
   currency: z
     .string()
@@ -52,4 +59,6 @@ export const ListExternalWalletsSchema = z.object({
   ending_before: z.string().optional(),
 });
 
-export type ListExternalWalletsInput = z.infer<typeof ListExternalWalletsSchema>;
+export type ListExternalWalletsInput = z.infer<
+  typeof ListExternalWalletsSchema
+>;

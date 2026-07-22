@@ -2,13 +2,24 @@ export * from './AccountLinkSchema';
 export * from './AccountSchema';
 export * from './ApiKeySchema';
 export * from './BalanceTransactionSchema';
-export * from './CustomerSchema';
+export * from './ChargeSchema';
 export * from './CheckoutSessionSchema';
+export * from './CustomerSchema';
 export * from './EventSchema';
+export * from './ExpandableSchema';
 export * from './ExternalWalletSchema';
+export * from './InvoiceItemSchema';
+export * from './InvoiceSchema';
+
+export * from './PaymentIntentSchema';
+export * from './PaymentLinkSchema';
 export * from './PayoutSchema';
-export * from './PriceSchema';
 export * from './PersonSchema';
+export * from './PriceSchema';
+export * from './ProductSchema';
+export * from './SubscriptionItemSchema';
+export * from './SubscriptionSchema';
 export * from './TopUpSchema';
+
 export * from './TransferSchema';
 export * from './WebhookEndpointSchema';

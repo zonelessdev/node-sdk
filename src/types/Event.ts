@@ -3,13 +3,20 @@ import { AccountLinkRecord } from './AccountLink';
 import { ApiKey } from './ApiKey';
 import { Balance } from './Balance';
 import { BalanceTransaction } from './BalanceTransaction';
+import { Charge } from './Charge';
+import { CheckoutSession } from './CheckoutSession';
 import { Customer } from './Customer';
 import { ExternalWallet } from './ExternalWallet';
 import { IdempotencyKey } from './IdempotencyKey';
+import { Invoice } from './Invoice';
+import { InvoiceItem } from './InvoiceItem';
+import { PaymentIntent } from './PaymentIntent';
+import { PaymentLink } from './PaymentLink';
 import { Payout } from './Payout';
 import { Person } from './Person';
 import { Price } from './Price';
 import { Product } from './Product';
+import { Subscription } from './Subscription';
 import { TopUp } from './TopUp';
 import { Transfer, TransferReversal } from './Transfer';
 
@@ -38,15 +45,66 @@ export const EVENT_TYPES = [
   // Balance transaction events
   'balance_transaction.created',
 
+  // Charge events
+  'charge.captured',
+  'charge.expired',
+  'charge.failed',
+  'charge.pending',
+  'charge.refunded',
+  'charge.succeeded',
+  'charge.updated',
+
+  // Checkout session events
+  'checkout.session.async_payment_failed',
+  'checkout.session.async_payment_succeeded',
+  'checkout.session.completed',
+  'checkout.session.expired',
+
   // Customer events
   'customer.created',
   'customer.updated',
   'customer.deleted',
+  'customer.subscription.created',
+  'customer.subscription.deleted',
+  'customer.subscription.paused',
+  'customer.subscription.pending_update_applied',
+  'customer.subscription.pending_update_expired',
+  'customer.subscription.resumed',
+  'customer.subscription.trial_will_end',
+  'customer.subscription.updated',
 
   // External account (wallet) events
   'external_account.created',
   'external_account.updated',
   'external_account.deleted',
+
+  // Invoice events
+  'invoice.created',
+  'invoice.deleted',
+  'invoice.finalized',
+  'invoice.marked_uncollectible',
+  'invoice.paid',
+  'invoice.payment_failed',
+  'invoice.payment_succeeded',
+  'invoice.updated',
+  'invoice.voided',
+
+  // Invoice item events
+  'invoiceitem.created',
+  'invoiceitem.deleted',
+
+  // PaymentIntent events
+  'payment_intent.created',
+  'payment_intent.updated',
+  'payment_intent.canceled',
+  'payment_intent.payment_failed',
+  'payment_intent.processing',
+  'payment_intent.requires_action',
+  'payment_intent.succeeded',
+
+  // Payment Link events
+  'payment_link.created',
+  'payment_link.updated',
 
   // Payout events
   'payout.created',
@@ -95,13 +153,20 @@ export type EventDataObject =
   | ApiKey
   | Balance
   | BalanceTransaction
+  | Charge
+  | CheckoutSession
   | Customer
   | ExternalWallet
   | IdempotencyKey
+  | Invoice
+  | InvoiceItem
+  | PaymentIntent
+  | PaymentLink
   | Payout
   | Person
   | Price
   | Product
+  | Subscription
   | TopUp
   | Transfer
   | TransferReversal

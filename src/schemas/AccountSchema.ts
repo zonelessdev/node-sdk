@@ -223,12 +223,14 @@ export const ListAccountsSchema = z
     limit: z.number().int().min(1).max(100),
     starting_after: z.string(),
     ending_before: z.string(),
-    created: z.object({
-      gt: z.number().int(),
-      gte: z.number().int(),
-      lt: z.number().int(),
-      lte: z.number().int(),
-    }).partial(),
+    created: z
+      .object({
+        gt: z.number().int(),
+        gte: z.number().int(),
+        lt: z.number().int(),
+        lte: z.number().int(),
+      })
+      .partial(),
   })
   .partial();
 

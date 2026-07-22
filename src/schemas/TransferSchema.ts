@@ -14,7 +14,7 @@ export const CreateTransferSchema = z.object({
   /** Three-letter ISO code for currency in lowercase (required) */
   currency: z.string().min(1, 'Currency is required').toLowerCase(),
 
-  /** The ID of a connected Stripe account (required) */
+  /** The ID of a connected account (required) */
   destination: z.string().min(1, 'Destination account is required'),
 
   /** An arbitrary string attached to the object */

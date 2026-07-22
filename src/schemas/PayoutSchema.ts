@@ -80,7 +80,9 @@ export const ListPayoutsSchema = z.object({
   destination: z.string().optional(),
 
   /** Only return payouts that have the given status */
-  status: z.enum(['pending', 'in_transit', 'paid', 'failed', 'canceled']).optional(),
+  status: z
+    .enum(['pending', 'in_transit', 'paid', 'failed', 'canceled'])
+    .optional(),
 
   /** Only return payouts that arrived during the given date interval */
   arrival_date: z
@@ -141,4 +143,6 @@ export const BroadcastPayoutsBatchSchema = z.object({
   last_valid_block_height: z.number().int().positive().optional(),
 });
 
-export type BroadcastPayoutsBatchInput = z.infer<typeof BroadcastPayoutsBatchSchema>;
+export type BroadcastPayoutsBatchInput = z.infer<
+  typeof BroadcastPayoutsBatchSchema
+>;

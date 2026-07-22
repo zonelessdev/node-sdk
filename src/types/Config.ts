@@ -6,8 +6,20 @@
 export interface AppConfig {
   /** MongoDB connection string */
   mongodbUri: string;
-  /** Dashboard URL (e.g., http://localhost:4200 or https://connect.yourdomain.com) */
+  /** Dashboard URL (e.g., http://localhost:4200 or https://dashboard.zoneless.com) */
   dashboardUrl: string;
+  /**
+   * Hosted checkout URL origin (e.g., https://checkout.zoneless.com).
+   * Defaults to dashboardUrl for single-domain / self-hosted deployments.
+   * Session links are always `{checkoutUrl}/c/{url_slug}` (opaque slug, not the API id).
+   */
+  checkoutUrl: string;
+  /**
+   * Payment Link URL origin (e.g., https://pay.zoneless.com).
+   * Defaults to checkoutUrl for single-domain / self-hosted deployments.
+   * Payment link URLs are always `{paymentLinkUrl}/b/{url_slug}` (opaque slug, not the API id).
+   */
+  paymentLinkUrl: string;
   /**
    * Master application secret (from APP_SECRET env or auto-generated).
    * Purpose-specific keys (JWT, encryption) are derived from this via HKDF.
@@ -48,6 +60,8 @@ export interface PublicConfig {
   terms_url: string;
   /** URL to the platform's Privacy Policy page (empty string if not set) */
   privacy_url: string;
+  /** True if running in live mode, false for test mode */
+  livemode: boolean;
 }
 
 /**
@@ -62,11 +76,14 @@ export interface SetupStatus {
   has_wallet: boolean;
   /** Whether the authenticated user is a connected account (should redirect away from setup) */
   is_connected_account?: boolean;
+  /** True when the instance is operator-managed (public setup is disabled) */
+  operator_mode?: boolean;
 }
 
 /**
  * Request body for POST /v1/setup
  * Creates a new platform account with wallet configuration.
+ * Wallet is generated in the browser - only the public key is sent to the API.
  */
 export interface SetupRequest {
   /** Platform display name */
@@ -81,12 +98,8 @@ export interface SetupRequest {
   platform_url?: string;
   /** Country code for the platform (optional, defaults to 'US') */
   country?: string;
-  /** Solana public key (required if generate_wallet is false) */
-  solana_public_key?: string;
-  /** Solana secret key (required if generate_wallet is false) */
-  solana_secret_key?: string;
-  /** Whether to generate a new Solana wallet */
-  generate_wallet?: boolean;
+  /** Solana wallet public key (required - generated in browser or existing wallet) */
+  solana_public_key: string;
 }
 
 /**
@@ -100,10 +113,8 @@ export interface SetupResponse {
   api_key: string;
   /** The platform account ID */
   platform_account_id: string;
-  /** The Solana public key */
+  /** The Solana wallet public key */
   solana_public_key: string;
-  /** The Solana secret key (only shown if generate_wallet was true) */
-  solana_secret_key?: string;
   /** JWT token for immediate dashboard access */
   login_token: string;
 }
@@ -116,9 +127,9 @@ export interface DepositInfo {
   object: 'deposit_info';
   /** The Solana wallet address to send USDC to */
   wallet_address: string;
-  /** The network to use (always 'solana' for now) */
+  /** The network to use */
   network: 'solana';
-  /** The currency to send (always 'usdc' for now) */
+  /** The currency to send */
   currency: 'usdc';
   /** URL to view the wallet on a blockchain explorer */
   explorer_url: string;
