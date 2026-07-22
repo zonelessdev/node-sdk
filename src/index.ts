@@ -6,6 +6,7 @@ import { BalanceTransactions } from './resources/BalanceTransactions';
 import { Checkout } from './resources/Checkout';
 import { Customers } from './resources/Customers';
 import { Events } from './resources/Events';
+import { InvoiceItems } from './resources/InvoiceItems';
 import { Invoices } from './resources/Invoices';
 import { LoginLinks } from './resources/LoginLinks';
 import { Payouts } from './resources/Payouts';
@@ -67,6 +68,9 @@ export class Zoneless {
   /** Events API resource */
   readonly events: Events;
 
+  /** InvoiceItems API resource */
+  readonly invoiceItems: InvoiceItems;
+
   /** Invoices API resource */
   readonly invoices: Invoices;
 
@@ -126,6 +130,7 @@ export class Zoneless {
     this.checkout = new Checkout(this.client);
 		this.customers = new Customers(this.client);
     this.events = new Events(this.client);
+    this.invoiceItems = new InvoiceItems(this.client);
     this.invoices = new Invoices(this.client);
     this.loginLinks = new LoginLinks(this.client);
     this.payouts = new Payouts(this.client);
