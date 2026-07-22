@@ -11,6 +11,7 @@ export {
   ExternalAccounts,
   ExternalWalletDeletedResponse,
 } from './ExternalAccounts';
+export { Invoices } from './Invoices';
 export { LoginLinks } from './LoginLinks';
 export { Payouts } from './Payouts';
 export { Persons } from './Persons';
