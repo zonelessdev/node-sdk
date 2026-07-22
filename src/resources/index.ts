@@ -14,6 +14,7 @@ export {
 export { InvoiceItems } from './InvoiceItems';
 export { Invoices } from './Invoices';
 export { LoginLinks } from './LoginLinks';
+export { PaymentIntents } from './PaymentIntents';
 export { Payouts } from './Payouts';
 export { Persons } from './Persons';
 export { Prices } from './Prices';
