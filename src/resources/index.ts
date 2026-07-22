@@ -18,6 +18,7 @@ export { Prices } from './Prices';
 export { Products } from './Products';
 export { Checkout } from './Checkout';
 export { CheckoutSessions } from './CheckoutSessions';
+export { Subscriptions } from './Subscriptions';
 export { TopUps } from './TopUps';
 export { Transfers } from './Transfers';
 export { WebhookEndpoints } from './WebhookEndpoints';

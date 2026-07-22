@@ -7,6 +7,7 @@ import {
 	RetrievePriceInput
 } from '../schemas/PriceSchema';
 import { ListResponse } from '../types/ApiResponse';
+import { ApplyDateFilter } from '../utils';
 
 /**
  * @see https://zoneless.com/docs/prices
@@ -41,20 +42,7 @@ export class Prices extends BaseResource {
       product: params.product,
       lookup_keys: params.lookup_keys,
 		};
-		if (params.created) {
-      if (params.created.gt !== undefined) {
-        query['created[gt]'] = params.created.gt;
-      }
-      if (params.created.gte !== undefined) {
-        query['created[gte]'] = params.created.gte;
-      }
-      if (params.created.lt !== undefined) {
-        query['created[lt]'] = params.created.lt;
-      }
-      if (params.created.lte !== undefined) {
-        query['created[lte]'] = params.created.lte;
-      }
-    }
+		ApplyDateFilter(query, 'created', params.created);
 		if (params.recurring) {
 			if(params.recurring.interval !== undefined) {
 				query['recurring[interval]'] = params.recurring.interval;

@@ -161,10 +161,15 @@ export class HttpClient {
   /**
    * Makes a DELETE request.
    */
-  async Delete<T>(path: string, options?: RequestExtraOptions): Promise<T> {
+  async Delete<T>(
+    path: string,
+    body?: object,
+    options?: RequestExtraOptions
+  ): Promise<T> {
     return this.Request<T>({
       method: 'DELETE',
       path,
+      body,
       headers: options?.headers,
       zonelessAccount: options?.zonelessAccount,
     });

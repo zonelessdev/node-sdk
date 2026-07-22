@@ -16,6 +16,7 @@ import {
   BroadcastPayoutsBatchInput,
 } from '../schemas/PayoutSchema';
 import { ListResponse } from '../types/ApiResponse';
+import { ApplyDateFilter } from '../utils';
 
 /**
  * @see https://zoneless.com/docs/payouts
@@ -307,35 +308,8 @@ export class Payouts extends BaseResource {
       status: params.status,
     };
 
-    if (params.arrival_date) {
-      if (params.arrival_date.gt !== undefined) {
-        query['arrival_date[gt]'] = params.arrival_date.gt;
-      }
-      if (params.arrival_date.gte !== undefined) {
-        query['arrival_date[gte]'] = params.arrival_date.gte;
-      }
-      if (params.arrival_date.lt !== undefined) {
-        query['arrival_date[lt]'] = params.arrival_date.lt;
-      }
-      if (params.arrival_date.lte !== undefined) {
-        query['arrival_date[lte]'] = params.arrival_date.lte;
-      }
-    }
-
-    if (params.created) {
-      if (params.created.gt !== undefined) {
-        query['created[gt]'] = params.created.gt;
-      }
-      if (params.created.gte !== undefined) {
-        query['created[gte]'] = params.created.gte;
-      }
-      if (params.created.lt !== undefined) {
-        query['created[lt]'] = params.created.lt;
-      }
-      if (params.created.lte !== undefined) {
-        query['created[lte]'] = params.created.lte;
-      }
-    }
+    ApplyDateFilter(query, 'arrival_date', params.arrival_date);
+    ApplyDateFilter(query, 'created', params.created);
 
     return query;
   }

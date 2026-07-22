@@ -19,6 +19,7 @@ import {
   ExternalWalletDeletedResponse,
 } from './ExternalAccounts';
 import { Person, PersonDeleted } from '../types/Person';
+import { ApplyDateFilter } from '../utils';
 import {
   CreatePersonInput,
   UpdatePersonInput,
@@ -77,6 +78,7 @@ export class Accounts extends BaseResource {
   ): Promise<AccountDeletedResponse> {
     return this.client.Delete<AccountDeletedResponse>(
       `/accounts/${id}`,
+      undefined,
       options
     );
   }
@@ -92,20 +94,7 @@ export class Accounts extends BaseResource {
       ending_before: params.ending_before,
     };
 
-    if (params.created) {
-      if (params.created.gt !== undefined) {
-        query['created[gt]'] = params.created.gt;
-      }
-      if (params.created.gte !== undefined) {
-        query['created[gte]'] = params.created.gte;
-      }
-      if (params.created.lt !== undefined) {
-        query['created[lt]'] = params.created.lt;
-      }
-      if (params.created.lte !== undefined) {
-        query['created[lte]'] = params.created.lte;
-      }
-    }
+    ApplyDateFilter(query, 'created', params.created);
 
     return this.client.Get<ListResponse<Account>>('/accounts', query, options);
   }
