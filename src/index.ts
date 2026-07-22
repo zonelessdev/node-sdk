@@ -11,6 +11,7 @@ import { InvoiceItems } from './resources/InvoiceItems';
 import { Invoices } from './resources/Invoices';
 import { LoginLinks } from './resources/LoginLinks';
 import { PaymentIntents } from './resources/PaymentIntents';
+import { PaymentLinks } from './resources/PaymentLinks';
 import { Payouts } from './resources/Payouts';
 import { Prices } from './resources/Prices';
 import { Products } from './resources/Products';
@@ -85,6 +86,9 @@ export class Zoneless {
   /** PaymentIntents API resource */
   readonly paymentIntents: PaymentIntents;
 
+  /** PaymentLinks API resource */
+  readonly paymentLinks: PaymentLinks;
+
   /** Payouts API resource */
   readonly payouts: Payouts;
 
@@ -143,6 +147,7 @@ export class Zoneless {
     this.invoices = new Invoices(this.client);
     this.loginLinks = new LoginLinks(this.client);
     this.paymentIntents = new PaymentIntents(this.client);
+    this.paymentLinks = new PaymentLinks(this.client);
     this.payouts = new Payouts(this.client);
 		this.prices = new Prices(this.client);
 		this.products = new Products(this.client);
