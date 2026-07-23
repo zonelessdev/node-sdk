@@ -11,6 +11,7 @@ export * from './ApiResponse';
 export * from './AuthenticatedUser';
 export * from './Balance';
 export * from './BalanceTransaction';
+export * from './Billing';
 export * from './Charge';
 export * from './Event';
 export * from './ExternalWallet';
