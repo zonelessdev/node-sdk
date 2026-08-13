@@ -290,6 +290,10 @@ export class Payouts extends BaseResource {
     unsignedTransaction: string,
     secretKey: string
   ): string {
+    if (unsignedTransaction === 'sim_tx') {
+      return unsignedTransaction;
+    }
+
     const keypair = Keypair.fromSecretKey(bs58.decode(secretKey));
     const txBuffer = Buffer.from(unsignedTransaction, 'base64');
     const transaction = Transaction.from(txBuffer);
